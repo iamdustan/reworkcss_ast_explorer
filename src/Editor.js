@@ -1,11 +1,10 @@
-/**@jsx React.DOM */
 /*jshint browser:true, newcap:false, expr:true*/
 "use strict";
 
 var CodeMirror = require('codemirror');
 require('codemirror/mode/javascript/javascript');
 var PubSub = require('pubsub-js');
-var React = require('react/addons');
+var React = require('react');
 var keypress = require('keypress').keypress;
 
 var Editor = React.createClass({

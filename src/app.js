@@ -1,6 +1,3 @@
-/**
- * @jsx React.DOM
- */
 "use strict";
 
 require('./Object.es7.shim');
@@ -10,13 +7,13 @@ var Editor = require('./Editor');
 var ErrorMessage = require('./ErrorMessage');
 var PasteDropTarget = require('./PasteDropTarget');
 var PubSub = require('pubsub-js');
-var React = require('react/addons');
+var React = require('react');
 var Snippet = require('./Snippet');
 var SplitPane = require('./SplitPane');
 var Toolbar = require('./Toolbar');
 
 var getFocusPath = require('./getFocusPath');
-var esprima = require('esprima-fb');
+var css = require('css');
 var fs = require('fs');
 var keypress = require('keypress').keypress;
 
@@ -106,7 +103,7 @@ var App = React.createClass({
 
   _clearRevision: function() {
     this.setState({
-      ast: esprima.parse(initialCode, {range: true, sourceType: 'module'}),
+      ast: css.parse(initialCode),
       focusPath: [],
       content: initialCode,
       snippet: null,
@@ -123,7 +120,7 @@ var App = React.createClass({
 
     var ast;
     try {
-      ast = esprima.parse(content, {range: true, sourceType: 'module'});
+      ast = css.parse(content, {});
     }
     catch(e) {
       this.setState({

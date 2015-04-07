@@ -1,8 +1,8 @@
 "use strict";
 
-var React = require('react/addons');
+var React = require('react');
 
-var escodegen = require('escodegen');
+var css = require('css');
 
 var PasteDropTarget = React.createClass({
   propTypes: {
@@ -132,7 +132,7 @@ var PasteDropTarget = React.createClass({
 
   _jsonToCode: function(json) {
     var ast = JSON.parse(json);
-    return escodegen.generate(ast, {format: {indent: {style: '  '}}});
+    return css.stringify(ast, {format: {indent: {style: '  '}}}).code;
   },
 
   _bindListener: function(elem, event, listener, capture) {

@@ -1,14 +1,11 @@
-/**
- * @jsx React.DOM
- */
 "use strict";
 
 var JSONEditor = require('./JSONEditor');
 var Element = require('./Element');
 var PubSub = require('pubsub-js');
-var React = require('react/addons');
+var React = require('react');
 
-var cx = React.addons.classSet;
+var cx = require('./cx');
 
 var ASTOutput = React.createClass({
   propTypes: {

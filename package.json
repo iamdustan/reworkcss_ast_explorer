@@ -1,30 +1,32 @@
 {
-  "name": "esprima_harmony_demo",
+  "name": "reworkcss_ast_demo",
   "version": "0.1.0",
-  "description": "Online demo of FB's esprima harmony branch",
+  "description": "Online AST explorer of Rework/css’s AST structure",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fkling/esprima_ast_explorer.git"
+    "url": "https://github.com/iamdustan/reworkcss_ast_explorer.git"
   },
-  "author": "Felix Kling",
+  "authors": [
+    "Dustan Kasten",
+    "Felix Kling"
+  ],
   "license": "MIT",
   "devDependencies": {
     "brfs": "^1.1.1",
     "browserify": "^9.0.3",
     "envify": "^3.2.0",
     "http-server": "^0.8.0",
-    "reactify": "^1.0.0",
+    "reactify": "^1.1.0",
     "uglify-js": "^2.4.16",
     "watchify": "^2.3.0"
   },
   "dependencies": {
     "codemirror": "^5.1.0",
-    "escodegen": "^1.4.1",
-    "esprima-fb": "^14001.1.0-dev-harmony-fb",
+    "css": "^2.2.0",
     "keypress": "git://github.com/dmauro/Keypress",
     "pubsub-js": "^1.4.2",
-    "react": "^0.12.1",
-    "react-tools": "^0.12.x"
+    "react": "^0.13.1",
+    "react-tools": "^0.13.x"
   },
   "browserify": {
     "transform": [

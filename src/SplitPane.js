@@ -1,8 +1,8 @@
 "use strict";
 
-var React = require('react/addons');
+var React = require('react');
 
-var cloneWithProps = React.addons.cloneWithProps;
+var cloneWithProps = require('react/lib/cloneWithProps');
 
 /**
  * Creates a left-right split pane inside its container.

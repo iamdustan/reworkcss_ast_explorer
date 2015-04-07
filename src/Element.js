@@ -1,6 +1,3 @@
-/**
- * @jsx React.DOM
- */
 "use strict";
 
 var ArrayElements = require('./ArrayElements');
@@ -8,10 +5,10 @@ var ArrayFormatter = require('./ArrayFormatter');
 var ObjectFormatter = require('./ObjectFormatter');
 var PropertyList = require('./PropertyList');
 var PubSub = require('pubsub-js');
-var React = require('react/addons');
+var React = require('react');
 var TokenName = require('./TokenName');
 
-var cx = React.addons.classSet;
+var cx = require('./cx');
 var isArray = require('./isArray');
 
 /* For debugging

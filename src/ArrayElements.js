@@ -1,9 +1,6 @@
-/**
- * @jsx React.DOM
- */
 "use strict";
 
-var React = require('react/addons');
+var React = require('react');
 
 var ArrayElements = React.createClass({
   getDefaultProps: function() {

@@ -3,7 +3,7 @@
  */
 "use strict";
 
-var React = require('react/addons');
+var React = require('react');
 var TokenName = require('./TokenName');
 
 var ObjectFormatter = React.createClass({
@@ -17,7 +17,7 @@ var ObjectFormatter = React.createClass({
     else {
       return (
         <span>
-          {object.type ? <TokenName onClick={this.props.onClick} object={object} /> : null}
+          {object.type && <TokenName onClick={this.props.onClick} object={object} />}
           <span className="p">{" {"}</span>
           <span className="placeholder ge">{keys.join(', ')}</span>
           <span className="p">{"}"}</span>

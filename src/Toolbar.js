@@ -1,11 +1,7 @@
-/**
- * @jsx React.DOM
- */
 "use strict";
 
-var React = require('react/addons');
-var cx = React.addons.classSet;
-var esprima = require('esprima-fb');
+var React = require('react');
+var cx = require('./cx');
 
 var Toolbar = React.createClass({
   propTypes: {
@@ -18,7 +14,7 @@ var Toolbar = React.createClass({
   render: function() {
     return (
       <div id="Toolbar">
-        <h1>JS AST Explorer</h1>
+        <h1>CSS AST Explorer</h1>
         <button
           type="button"
           disabled={
@@ -54,7 +50,7 @@ var Toolbar = React.createClass({
           Fork
         </button>
         <div id="parser">
-          Parser: esprima-fb-{esprima.version}
+          Parser:
         </div>
       </div>
     );

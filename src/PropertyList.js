@@ -1,8 +1,5 @@
-/**
- * @jsx React.DOM
- */
-
-var React = require('react/addons');
+"use strict";
+var React = require('react');
 
 var PropertyList = React.createClass({
   getDefaultProps: function() {

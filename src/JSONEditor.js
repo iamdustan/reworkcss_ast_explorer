@@ -1,4 +1,3 @@
-/**@jsx React.DOM */
 /*jshint browser:true, newcap:false, expr:true*/
 "use strict";
 
@@ -8,7 +7,7 @@ require('codemirror/addon/fold/foldgutter');
 require('codemirror/addon/fold/foldcode');
 require('codemirror/addon/fold/brace-fold');
 var PubSub = require('pubsub-js');
-var React = require('react/addons');
+var React = require('react');
 
 var Editor = React.createClass({
 
