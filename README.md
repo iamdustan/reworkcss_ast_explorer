@@ -1,27 +1,19 @@
-## A JavaScript AST explorer
+## A CSS AST explorer
 
-Paste JavaScript code into the editor and inspect the generated AST.
+**This is a fork of @fkling’s [Esprima AST Explorer](https://github.com/fkling/esprima_ast_explorer)**
 
-The JS AST explorer uses [esprima-fb](https://github.com/facebook/esprima) to parse the
-code, so it not only supports current JS (ES5), but also
+Paste CSS code into the editor and inspect the generated AST.
 
-- ES6: [arrow functions](https://github.com/lukehoban/es6features#arrows), [destructuring](https://github.com/lukehoban/es6features#destructuring),
-  [classes](https://github.com/lukehoban/es6features#classes), ...
-- ES7 propsals: [async/await](https://github.com/lukehoban/ecmascript-asyncawait), [object rest / spread](https://github.com/sebmarkbage/ecmascript-rest-spread),  ...
-- [JSX](https://facebook.github.io/jsx/), known through [React](https://facebook.github.io/react/).
-- Typed JavaScript ([Flow](http://flowtype.org/))
-
-Since future syntax is supported, the JS AST explorer is a useful tool for
-developers who want to create AST transforms, e.g. with
-[recast](https://github.com/benjamn/recast).
+The CSS AST explorer uses [rework/css](https://github.com/reworkcss/css) to
+parse the code.
 
 ### Features
 
 - Save and fork code snippets. Copy the URL to share them.
 - Copying an AST or dropping a file containing an AST into the window will
-parse the AST and update the code using [escodegen](https://github.com/estools/escodegen).
+parse the AST and update the code using [css](https://github.com/reworkcss/css).
 - Otherwise, the content of texteditor will be replaced with the content of the file (i.e.
-you can drag and drop JS files).
+you can drag and drop CSS files).
 - shift+click on a node expands the full subtree.
 - Hovering over a node highlights the corresponding text in the source code:
 ![source highlight](assets/source.png)
@@ -31,8 +23,10 @@ corresponding AST node (or its ancestors of it isn't expanded):
 
 ### Contributions
 
-I'm happy about any feedback, feature request or PR to make this tool as useful
-as possible!
+This project is a fork of [https://github.com/fkling/esprima_ast_explorer](https://github.com/fkling/esprima_ast_explorer).
+There are a few integration bugs due to using a different AST generator which
+haven’t been handled yet. Most feature requests or other issues should likely be
+filed on the esprima_ast_explorer issue tracker: [https://github.com/fkling/esprima_ast_explorer/issues](https://github.com/fkling/esprima_ast_explorer/issues).
 
 #### Build your own version
 
