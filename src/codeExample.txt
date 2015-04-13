@@ -17,3 +17,10 @@ p {
   color: purple !important;
 }
 
+@media screen and (min-width: 600px) {
+  body {
+    background: green;
+    font-size: 21px;
+  }
+}
+
