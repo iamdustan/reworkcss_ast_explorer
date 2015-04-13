@@ -2,6 +2,7 @@
 
 var React = require('react');
 var cx = require('./cx');
+var css = require('css/package');
 
 var Toolbar = React.createClass({
   propTypes: {
@@ -50,7 +51,7 @@ var Toolbar = React.createClass({
           Fork
         </button>
         <div id="parser">
-          Parser:
+          Parser: reworkcss/css {css.version}
         </div>
       </div>
     );

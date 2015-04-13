@@ -1,15 +1,13 @@
-/**
- * @jsx React.DOM
- */
 "use strict";
 
 var React = require('react');
 var TokenName = require('./TokenName');
+var Adapter = require('./adapters/css');
 
 var ObjectFormatter = React.createClass({
   render: function() {
     var object = this.props.object;
-    var keys = Object.keys(object).filter(k => k !== 'range');
+    var keys = Adapter.ObjectFormatterKeys(object);
 
     if (keys.length === 0) {
       return <span className="p">{"{ }"}</span>;

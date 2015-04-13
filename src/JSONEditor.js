@@ -3,6 +3,7 @@
 
 var CodeMirror = require('codemirror');
 require('codemirror/mode/javascript/javascript');
+require('codemirror/mode/css/css');
 require('codemirror/addon/fold/foldgutter');
 require('codemirror/addon/fold/foldcode');
 require('codemirror/addon/fold/brace-fold');
@@ -35,7 +36,7 @@ var Editor = React.createClass({
       this.refs.container.getDOMNode(),
       {
         value: this.props.value,
-        mode: {name: "javascript", json: true},
+        mode: {name: "css"},
         readOnly: true,
         lineNumbers: true,
         foldGutter: true,

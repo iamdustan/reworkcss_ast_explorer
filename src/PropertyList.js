@@ -1,6 +1,8 @@
 "use strict";
 var React = require('react');
 
+var Adapters = require('./adapters/css');
+
 var PropertyList = React.createClass({
   getDefaultProps: function() {
     return {
@@ -11,11 +13,13 @@ var PropertyList = React.createClass({
 
   render: function() {
     var Element = require('./Element');
-    var focusPath = this.props.focusPath;
-    var level = this.props.level;
+    var {
+      focusPath,
+      level,
+      object
+    } = this.props;
 
-    var properties = Object.keys(this.props.object).map(key => {
-      if (key === 'range') return;
+    var properties = Adapters.ObjectFormatterKeys(object).map(key => {
       var v = this.props.object[key];
       return (
         <Element

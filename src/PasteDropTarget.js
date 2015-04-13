@@ -4,6 +4,12 @@ var React = require('react');
 
 var css = require('css');
 
+var indexOf = (a, b) => {
+  for (var i = 0; i < a.length; i++)
+    if (a[i] === b) return i;
+  return -1
+};
+
 var PasteDropTarget = React.createClass({
   propTypes: {
     dropindiciator: React.PropTypes.element,
@@ -28,8 +34,9 @@ var PasteDropTarget = React.createClass({
         return;
       }
       var cbdata = event.clipboardData;
+
       // Plain text
-      if (cbdata.types.indexOf('text/plain') > -1) {
+      if (indexOf(cbdata.types, 'text/plain') > -1) {
         try {
           if (this.props.onText) {
             var code = this._jsonToCode(cbdata.getData('text/plain'));
@@ -52,6 +59,7 @@ var PasteDropTarget = React.createClass({
     }, true);
 
     var acceptedFileTypes = {
+      'text/css': true,
       'text/javascript': true,
       'application/json': true,
       'text/plain': true
@@ -85,6 +93,9 @@ var PasteDropTarget = React.createClass({
       reader.onload = event => {
         var text = event.target.result;
         switch (type) {
+          case 'text/css':
+            this.props.onText('drop', event, text);
+            break;
           case 'text/javascipt':
             this.props.onText('drop', event, text);
             break;

@@ -77,10 +77,10 @@ var App = React.createClass({
     });
 
     PubSub.subscribe('HIGHLIGHT', function(_, astNode) {
-      PubSub.publish('CM.HIGHLIGHT', astNode.range);
+      PubSub.publish('CM.HIGHLIGHT', astNode.range || astNode.position);
     });
     PubSub.subscribe('CLEAR_HIGHLIGHT', function(_, astNode) {
-      PubSub.publish('CM.CLEAR_HIGHLIGHT', astNode && astNode.range);
+      PubSub.publish('CM.CLEAR_HIGHLIGHT', astNode && (astNode.range || astNode.position));
     });
   },
 
@@ -103,7 +103,7 @@ var App = React.createClass({
 
   _clearRevision: function() {
     this.setState({
-      ast: css.parse(initialCode),
+      ast: css.parse(initialCode, {}),
       focusPath: [],
       content: initialCode,
       snippet: null,
@@ -130,18 +130,20 @@ var App = React.createClass({
     }
 
     if (ast) {
+      var doc = this.refs.editor && this.refs.editor.getDocument();
       this.setState({
         content: content,
         ast: ast,
-        focusPath: cursor ? getFocusPath(ast, cursor): [],
+        focusPath: cursor ? getFocusPath(ast, cursor, [], doc): [],
         error: null
       });
     }
   },
 
   onActivity: function(cursorPos) {
+    var doc = this.refs.editor && this.refs.editor.getDocument();
     this.setState({
-      focusPath: getFocusPath(this.state.ast, cursorPos)
+      focusPath: getFocusPath(this.state.ast, cursorPos, [], doc)
     });
   },
 
@@ -209,7 +211,7 @@ var App = React.createClass({
         className="dropTarget"
         dropindicator={
           <div className="dropIndicator">
-            <div>Drop a JavaScript or (JSON-encoded) AST file here</div>
+            <div>Drop a CSS or (JSON-encoded) AST file here</div>
           </div>
         }
         onText={this._onDropText}

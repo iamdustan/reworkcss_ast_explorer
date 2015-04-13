@@ -3,11 +3,16 @@
 
 var CodeMirror = require('codemirror');
 require('codemirror/mode/javascript/javascript');
+require('codemirror/mode/css/css');
 var PubSub = require('pubsub-js');
 var React = require('react');
 var keypress = require('keypress').keypress;
 
 var Editor = React.createClass({
+
+  getDocument: function() {
+    return this.codeMirror && this.codeMirror.doc;
+  },
 
   getValue: function() {
     return this.codeMirror && this.codeMirror.getValue();
@@ -60,13 +65,24 @@ var Editor = React.createClass({
       PubSub.subscribe('CM.HIGHLIGHT', (_, range) => {
         var doc = this.codeMirror.getDoc();
         this._markerRange = range;
+        if (typeof range === 'undefined') return;
+
         // We only want one mark at a time.
         if (this._mark) this._mark.clear();
-        this._mark = this.codeMirror.markText(
-          doc.posFromIndex(range[0]),
-          doc.posFromIndex(range[1]),
-          {className: 'marked'}
-        );
+        if (range[0] && range[1]) {
+          this._mark = this.codeMirror.markText(
+            doc.posFromIndex(range[0]),
+            doc.posFromIndex(range[1]),
+            {className: 'marked'}
+          );
+        }
+        else {
+          this._mark = this.codeMirror.markText(
+            {line: range.start.line - 1, ch: range.start.column - 1},
+            {line: range.end.line - 1, ch: range.end.column - 1},
+            {className: 'marked'}
+          );
+        }
       }),
 
       PubSub.subscribe('CM.CLEAR_HIGHLIGHT', (_, range) => {
