@@ -90,7 +90,8 @@ var Element = React.createClass({
       return true;
     }
 
-    return false;
+    // TODO: find out why the many checks aren’t updating properly
+    return true;
   },
 
   componentWillReceiveProps: function(nextProps) {
