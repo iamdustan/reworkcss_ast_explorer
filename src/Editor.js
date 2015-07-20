@@ -65,10 +65,10 @@ var Editor = React.createClass({
       PubSub.subscribe('CM.HIGHLIGHT', (_, range) => {
         var doc = this.codeMirror.getDoc();
         this._markerRange = range;
-        if (typeof range === 'undefined') return;
-
         // We only want one mark at a time.
         if (this._mark) this._mark.clear();
+        if (typeof range === 'undefined') return;
+
         if (range[0] && range[1]) {
           this._mark = this.codeMirror.markText(
             doc.posFromIndex(range[0]),
@@ -87,10 +87,16 @@ var Editor = React.createClass({
 
       PubSub.subscribe('CM.CLEAR_HIGHLIGHT', (_, range) => {
         if (!range ||
-          this._markerRange &&
-          range[0] === this._markerRange[0] &&
-          range[1] === this._markerRange[1]
-        ) {
+          (this._markerRange && (
+            range[0] === this._markerRange[0] &&
+            range[1] === this._markerRange[1]
+          ) || (
+            range.start.column - 1 === this._markerRange[0].ch &&
+            range.start.line - 1 === this._markerRange[0].line &&
+            range.end.column - 1 === this._markerRange[1].ch &&
+            range.end.line - 1 === this._markerRange[1].line
+          )
+        )) {
           this._markerRange = null;
           if (this._mark) {
             this._mark.clear();
